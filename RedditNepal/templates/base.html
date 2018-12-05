@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>RedditNepal</title>
+    <!-- Latest compiled and minified CSS -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'RedditNepal/css/master.css'%}">
+  </head>
+  <body>
+
+    <nav class='navbar mynav' role="navigation" id = 'navbar'>
+      <div class="container">
+        <a class='navbar-brand mynav' href="{% url 'home' %}">RedditNepal</a>
+
+        <ul class='nav navbar-nav navbar-right'>
+          {% if user.is_authenticated %}
+            <li><a href="{% url 'posts:create' %}">Post</a></li>
+            <li> <a href="{% url 'subreddits:all' %}">Groups</a> </li>
+            <li> <a href="% url 'subreddits:create' %">Create Group</a> </li>
+            <li> <a href="{% url 'accounts:logout'%}">Logout</a> </li>
+          {% else %}
+            <li> <a href="{% url 'subreddits:all' %}">Groups</a> </li>
+            <li> <a href="{% url 'accounts:login' %}">LogIn</a> </li>
+            <li> <a href="{% url 'accounts:signup' %}">Sign Up</a> </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+    <div class="container mycontent">
+      {% block content%}
+
+      {% endblock %}
+    </div>
+
+    <div class="navbar navbar-fixed-bottom">
+
+      <div class="container-fluid text-center text-md-left">
+
+        <!-- Grid row -->
+        <div class="row">
+
+          <!-- Grid column -->
+          <div class="col-md-6 mt-md-0 mt-3">
+
+            <!-- Content -->
+            <h5 class="text-uppercase">Reddit Nepal</h5>
+            <p>This is a Project done with the help of Django online resources.</p>
+
+          </div>
+          <!-- Grid column -->
+
+          <hr class="clearfix w-100 d-md-none pb-3">
+
+          <!-- Grid column -->
+          <div class="col-md-3 mb-md-0 mb-3">
+
+              <!-- Links -->
+              <h5 class="text-uppercase">Links</h5>
+
+              <ul class="list-unstyled">
+                <li>
+                  <a href="#!">Home</a>
+                </li>
+                <li>
+                  <a href="#!">About</a>
+                </li>
+                <li>
+                  <a href="#!">Get Started</a>
+                </li>
+                <li>
+                  <a href="#!">Videos</a>
+                </li>
+              </ul>
+
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-3 mb-md-0 mb-3">
+
+              <!-- Links -->
+              <h5 class="text-uppercase">Links</h5>
+
+              <ul class="list-unstyled">
+                <li>
+                  <a href="#!">RedditNepal Team</a>
+                </li>
+                <li>
+                  <a href="#!">Careers</a>
+                </li>
+                <li>
+                  <a href="#!">Help</a>
+                </li>
+              </ul>
+
+            </div>
+
+        </div>
+
+      </div>
+
+      <div class="footer-copyright text-center py-3">© 2018 Copyright:
+        <a href="https://RedditNepal.com/"> Redditnepal.com</a>
+      </div>
+
+  </div>
+  </body>
+</html>

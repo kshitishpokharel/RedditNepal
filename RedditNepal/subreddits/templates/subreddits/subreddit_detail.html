@@ -1,0 +1,31 @@
+{% extends "subreddits/subreddit_detail.html" %}
+{% block presubreddit%}
+
+<h1>{{subreddit.name}}</h1>
+<h2>Member count:{{subreddit.members.count }}</h2>
+{% if user in subreddit.members.all %}
+  <a href="{% url 'subreddits:leave' slug=subreddit.slug %}"
+      class = 'btn btn-lg btn-fill btn-warning'
+      <span class='glyphicon gluphicon-remove-circle'>Leave</span>></a>
+{% else %}
+  <a href="{% url 'subreddits:join' slug=subreddit.slug %}"
+    class = 'btn btn-lg btn-fill btn-default'
+    <span class='glyphicon gluphicon-ok-circle'>Join</span>></a>
+{% endif %}
+
+{% endblock %}
+
+{% block subreddit_content %}
+<div class="col-md-8">
+  {% if subreddit.post.count==0 %}
+    <h2>No posts to show !!!</h2>
+  {% else %}
+    {% for post in subreddit.post.all %}
+      {% include "posts/_post.html"%}
+    {% endfor %}
+  {% endif %}
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "subreddits/subreddits_base.html" %}
+{% load bootstrap3 %}
+
+{%block subreddit_content %}
+<h4>Create a new SubReddit</h4>
+  <form action="{% url 'subreddits:create' %}" method="post" id="groupForm">
+    {% csrf_token %}
+    {%bootstrap_form form %}
+    <input type="submit" class="btn btn-primary btn-large" value="Create">
+  </form>
+{% endblock %}

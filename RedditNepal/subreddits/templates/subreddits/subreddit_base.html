@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content%}
+<div class="container">
+  <div class="row">
+    {% block presubreddit %}{% endblock %}
+    {% block subreddit_content %}{% endblock %}
+    {% block postsubreddit %}{% endblock %}
+
+  </div>
+
+</div>
+
+{% endblock %}
